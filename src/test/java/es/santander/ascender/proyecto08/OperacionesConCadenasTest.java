@@ -33,4 +33,6 @@ public class OperacionesConCadenasTest {
         Date fechaActual = new Date();
         assertTrue(fecha.before(fechaActual) || fecha.equals(fechaActual), "La fecha generada debe ser antes o igual a la fecha actual.");
     }
+
+    
 }
