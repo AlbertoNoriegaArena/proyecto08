@@ -6,7 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import org.junit.jupiter.api.Test;
 
@@ -32,6 +34,27 @@ public class OperacionesConCadenasTest {
         // Opcional: puedes verificar que el formato de la fecha esté en el rango esperado (actual)
         Date fechaActual = new Date();
         assertTrue(fecha.before(fechaActual) || fecha.equals(fechaActual), "La fecha generada debe ser antes o igual a la fecha actual.");
+    }
+
+    @Test
+
+    public void testDiaDeSemanaAcutal (){
+
+         Date fechaActual = new Date();                 // Obtiene la fecha actual del sistema
+        Calendar calendar = new GregorianCalendar();   // Crea una instancia de GregorianCalendar
+        calendar.setTime(fechaActual);                 // Establece la fecha actual en el calendario
+        
+        int diaDeLaSemana = calendar.get(Calendar.DAY_OF_WEEK); // Obtiene el número del día de la semana (1=Domingo, 2=Lunes, etc.)
+        
+        // Define un array con los nombres de los días de la semana en orden
+        String[] diasSemana = {"Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"};
+        
+        String diaEsperado = diasSemana[diaDeLaSemana - 1];
+        
+        // Llamar al método y verificar el resultado
+        String diaActual = OperacionesConCadenas.diaDeSemanaActual();
+        
+        assertEquals(diaEsperado, diaActual, "El día de la semana no coincide con el valor esperado.");
     }
 
     
